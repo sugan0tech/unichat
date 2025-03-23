@@ -59,7 +59,6 @@ UniChat/
    ```bash
    spacetime init spacetime-modules --lang csharp
    ```
-
 
    This command creates the necessary files for your server module.
 
@@ -68,14 +67,12 @@ UniChat/
    ```bash
    spacetime build
    ```
-
 
 3. **Publish the Module**: After building, publish your module to SpacetimeDB:
 
    ```bash
    spacetime publish --project-path spacetime-modules unichat
    ```
-
 
    Replace `unichat` with your desired database name.
 
@@ -86,28 +83,24 @@ UniChat/
    ```bash
    npm create vite@latest unichat-client -- --template react-ts
    ```
-
 
    Navigate into the project directory:
 
    ```bash
    cd unichat-client
    ```
-
 
 2. **Install Dependencies**: Install the necessary packages:
 
    ```bash
    npm install
    ```
-
 
 3. **Start the Development Server**: Launch the React development server:
 
    ```bash
    npm run dev
    ```
-
 
    Your application should now be running at `http://localhost:5173`.
 
@@ -116,14 +109,12 @@ UniChat/
    ```bash
    npm install @clockworklabs/spacetimedb-sdk
    ```
-
 
 5. **Generate TypeScript Bindings**: Generate TypeScript bindings based on your server module:
 
    ```bash
    spacetime generate --lang typescript --out-dir src/module_bindings --project-path ../spacetime-modules
    ```
-
 
    This command creates TypeScript interfaces in the `src/module_bindings` directory, allowing seamless interaction between the client and server.
 
@@ -137,4 +128,4 @@ For more detailed information, refer to the official SpacetimeDB documentation:
 
 ---
 
-**Author**: (sugan0tech)[https://github.com/sugan0tech] 
+**Author**: [sugan0tech](https://github.com/sugan0tech)
