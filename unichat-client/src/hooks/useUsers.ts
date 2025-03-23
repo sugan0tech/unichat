@@ -1,9 +1,10 @@
   import { useEffect, useState } from 'react';
-  import { moduleBindings } from '../module_bindings';
+  import { User } from '../module_bindings';
   import { spacetimeService } from '../services/spacetimeService';
 
   export const useUsers = () => {
-    const [users, setUsers] = useState<moduleBindings.User[]>([]);
+    const [users, setUsers] = useState<User[]>([]);
+    console.log(`fetching users from module.. current users:  ${users}`);
 
     useEffect(() => {
       spacetimeService.subscribeToUsers(setUsers);

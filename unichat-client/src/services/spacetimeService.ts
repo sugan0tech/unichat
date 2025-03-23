@@ -5,28 +5,29 @@ class SpacetimeService {
   private connection: DbConnection | null = null;
   private identity: Identity | null = null;
 
-  constructor() {
-    this.initializeConnection();
-  }
-
-  private initializeConnection() {
+  async connectWithToken(token: string) {
+    console.log("ConnectWithToken " + token)
     this.connection = DbConnection.builder()
       .withUri('ws://localhost:3000')
       .withModuleName('unichat')
-      .onConnect((conn, identity, token) => {
+      .withToken(token)
+      .onConnect((conn, identity, receivedToken) => {
         this.identity = identity;
         console.log('Connected with identity:', identity.toHexString());
-        localStorage.setItem('auth_token', token);
+        // Optionally update local storage if needed:
+        localStorage.setItem('auth_token', receivedToken);
         this.subscribeToTables();
       })
       .onDisconnect((ctx, error) => {
-        console.log('Disconnected from SpacetimeDB', error ? `due to error: ${error.message}` : '');
+        console.log(
+          'Disconnected from SpacetimeDB',
+          error ? `due to error: ${error.message}` : ''
+        );
         this.connection = null;
       })
       .onConnectError((ctx, error) => {
         console.error('Connection error:', error);
       })
-      .withToken(localStorage.getItem('auth_token') || '')
       .build();
   }
 
