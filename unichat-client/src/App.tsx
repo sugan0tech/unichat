@@ -14,6 +14,7 @@ const MainApp: React.FC = () => {
   const [currentUserId, setCurrentUserId] = useState<string | null>(null);
 
   useEffect(() => {
+    console.log(user)
     const connectToSpacetime = async () => {
       const identity = spacetimeService.getIdentity();
       const token = await getAccessTokenSilently({
@@ -39,7 +40,7 @@ const MainApp: React.FC = () => {
     if (isAuthenticated) {
       connectToSpacetime();
     }
-  }, [isAuthenticated, user]);
+  }, []);
 
   const handleUserSelect = (userId: string) => {
     setSelectedUserId(userId);
